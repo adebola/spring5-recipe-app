@@ -3,7 +3,7 @@ package guru.springframework.bootstrap;
 import guru.springframework.domain.*;
 import guru.springframework.repositories.CategoryRepository;
 import guru.springframework.repositories.RecipeRepository;
-import guru.springframework.repositories.UnitofMeasureRepository;
+import guru.springframework.repositories.UnitOfMeasureRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
@@ -21,10 +21,10 @@ import java.util.Optional;
 public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
     private final CategoryRepository categoryRepository;
     private final RecipeRepository recipeRepository;
-    private final UnitofMeasureRepository unitofMeasureRepository;
+    private final UnitOfMeasureRepository unitofMeasureRepository;
 
     @Autowired
-    public RecipeBootstrap(CategoryRepository categoryRepository, RecipeRepository recipeRepository, UnitofMeasureRepository unitofMeasureRepository) {
+    public RecipeBootstrap(CategoryRepository categoryRepository, RecipeRepository recipeRepository, UnitOfMeasureRepository unitofMeasureRepository) {
         this.categoryRepository = categoryRepository;
         this.recipeRepository = recipeRepository;
         this.unitofMeasureRepository = unitofMeasureRepository;
@@ -135,6 +135,9 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 
         guacRecipe.getCategories().add(americanCategory);
         guacRecipe.getCategories().add(mexicanCategory);
+        guacRecipe.setUrl("http://www.simplerecipes.com/recipes/perfect_guacamole");
+        guacRecipe.setServings(5);
+        guacRecipe.setSource("Simply Recipes");
 
         //add to return list
         recipes.add(guacRecipe);
@@ -193,6 +196,10 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 
         tacosRecipe.getCategories().add(americanCategory);
         tacosRecipe.getCategories().add(mexicanCategory);
+
+        tacosRecipe.setSource("Simply Recipes");
+        tacosRecipe.setServings(3);
+        tacosRecipe.setUrl("https://www.simplyrecipes.com/recipes/fish_taco_salad_bowl/");
 
         recipes.add(tacosRecipe);
 
